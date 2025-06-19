@@ -1,0 +1,28 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id        Int      @id @default(autoincrement()) // 商品ID (主キー, 自動インクリメント)
+  name      String   // 商品名
+  price     Int      // 価格
+  imageUrl  String?  // 商品画像のURL (任意)
+  createdAt DateTime @default(now()) // 作成日時
+  updatedAt DateTime @updatedAt // 更新日時
+}
+
+model Sale {
+  id        Int      @id @default(autoincrement())
+  total     Int      // 売上合計金額
+  items     Json     // 売れた商品の情報 (JSON形式で保存)
+  createdAt DateTime @default(now())
+}
