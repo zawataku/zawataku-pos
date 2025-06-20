@@ -26,3 +26,10 @@ model Sale {
   items     Json     // 売れた商品の情報 (JSON形式で保存)
   createdAt DateTime @default(now())
 }
+
+model SessionCart {
+  id        String   @id // セッションID (例: 'abc-123-xyz')
+  items     Json     // 現在のカートの中身
+  total     Int      // 現在の合計金額
+  updatedAt DateTime @updatedAt
+}

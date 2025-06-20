@@ -2,7 +2,7 @@
 
 import { useRef, useTransition } from 'react';
 import { createProduct, deleteProduct } from '@/app/actions/productActions';
-import type { Product } from '@/generated/prisma' //ここを明示すると上手くいくっぽい
+import type { Product } from '@prisma/client';
 
 interface ProductEditorProps {
     products: Product[];
